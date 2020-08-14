@@ -6,7 +6,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="UTF-8">
-    <title>CurrencyExchange: Registration</title>
+    <title>Calculator: Registration</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/registration.css}">
 </head>
@@ -23,22 +23,22 @@
         <div class="registration-section-container">
             <h1 class="registration-section-container-title">Create An Account</h1>
             <p class="registration-section-container-description">Create your account, it takes less than a minute. If
-                you already have an account - <a href="index.html"
+                you already have an account - <a href="login.html"
                                                  class="registration-section-container-description-link">login</a></p>
             <form method="post" th:action="@{/register}" th:object="${form}" class="registration-section-container-form">
                 <div class="registration-section-container-form-input-wrapper">
                     <img th:src="@{/img/user-icon.svg}" alt="User Icon">
-                    <label for="username"></label>
-                    <input class="registration-section-container-form-input" id="username" placeholder="Username"
-                           type="text" th:field="*{username}"  >
-                        <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color: red"></span>
+                    <label for="fullname"></label>
+                    <input class="registration-section-container-form-input" id="fullname" placeholder="Fullname"
+                           type="text" th:field="*{fullname}"  >
+                        <span class="error" th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}" style="color: red"></span>
                 </div>
                 <div class="registration-section-container-form-input-wrapper">
                     <img th:src="@{/img/mail-icon.svg}" alt="User Icon">
-                    <label  for="email"></label>
-                    <input class="registration-section-container-form-input" id="email" placeholder="Email address"
-                           type="email" th:field="*{email}">
-                    <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
+                    <label  for="username"></label>
+                    <input class="registration-section-container-form-input" id="username" placeholder="Email address"
+                           type="email" th:field="*{username}">
+                    <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color: red"></span>
 
                 </div>
                 <div class="registration-section-container-form-input-wrapper">

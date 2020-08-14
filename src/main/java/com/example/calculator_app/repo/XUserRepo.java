@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface XUserRepo extends JpaRepository<XUser, Long> {
-    Optional<XUser> findXUsersByEmail(String email);
+    Optional<XUser> findXUsersByUsername(String username);
 }

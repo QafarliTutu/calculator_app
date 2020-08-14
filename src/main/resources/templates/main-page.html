@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/main-page.css}">
     <link rel="stylesheet" th:href="@{/css/custom-select.css}">
-    <title>Calculator: Main Page</title>
+    <title>Exchange: Main Page</title>
 </head>
 
 <body>
@@ -19,10 +19,17 @@
     <div class="main-header-wrapper">
         <div class="main-header-profile-wrapper">
             <div class="main-header-profile-credentials">
-                <span class="main-header-username">Guest</span>
+                <div th:if="${!name.equals('')}">
+                <span class="main-header-username" th:text="${name}"></span>
+                </div>
                 <div class="log-out-block">
                     <img th:src="@{/img/log-out-icon.svg}" alt="Log out">
-                    <a href="/login" class="log-out-btn">Log out</a>
+                    <div th:if="${name.equals('')}">
+                    <a href="/login" class="log-out-btn">Login</a>
+                    </div>
+                    <div th:unless="${name.equals('')}">
+                        <a href="/logout" class="log-out-btn">Log out</a>
+                    </div>
                 </div>
             </div>
             <img class="main-header-person-icon" th:src="@{/img/user-icon-with-background.svg}" alt="User Icon">

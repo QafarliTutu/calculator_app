@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserForm {
+    private String fullname;
     private String username;
-    private String email;
     private String password;
-    private String  passwordConfirm;
+    private String passwordConfirm;
     private String ref_user_email;
 }

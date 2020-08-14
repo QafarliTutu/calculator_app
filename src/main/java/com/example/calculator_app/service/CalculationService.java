@@ -16,6 +16,7 @@ public class CalculationService {
 
     public String calculate(String x) throws ScriptException {
         ScriptEngine engine = mgr.getEngineByName("JavaScript");
+        if(x.equals("")) return "Empty expression!";
         String result = engine.eval(x).toString();
         if (result.equals("Infinity")) return "Sorry, Dividing to zero is impossible!";
         return result;

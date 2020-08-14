@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator: Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+
+<div class="page-container">
+    <header class="header">
+        <a href="login.html" class="header-link"><img th:src="@{/img/iba-logo-sky-blue.svg}" alt="IBA Tech Academy"></a>
+    </header>
+
+    <section class="login-section">
+        <img class="login-section-image" th:src="@{/img/login-image.svg}" alt="404">
+        <div class="login-section-container">
+            <h1 class="login-section-container-title">Welcome Back!</h1>
+            <p class="login-section-container-description">To keep connected with us please login with personal
+                information by email address and password</p>
+            <div th:text="${message}" style="color:red;"></div>
+<!--            <div><a href="/web/main-page-guest">Continue without an account</a></div>-->
+            <form method="post" class="login-section-container-form" action="/login" >
+                <div class="login-section-container-form-input-wrapper">
+                    <img th:src="@{/img/mail-icon.svg}" alt="User Icon">
+                    <label for="username"></label>
+                    <input class="login-section-container-form-input" id="username" name="username" placeholder="Email address"
+                           type="text">
+<!--                    <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>-->
+
+                </div>
+                <div class="login-section-container-form-input-wrapper">
+                    <img th:src="@{/img/lock-icon.svg}" alt="User Icon">
+                    <label for="password"></label>
+                    <input class="login-section-container-form-input" id="password" name="password" placeholder="Password"
+                           type="password">
+<!--                    <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></span>-->
+
+                </div>
+                <div class="login-section-container-options">
+                    <div class="login-section-container-options-wrapper">
+                        <label class="login-section-container-options-checkbox-wrapper">Remember Me
+                            <input type="checkbox" class="login-section-container-options-old-checkbox">
+                            <span class="login-section-container-options-checkmark"></span>
+                        </label>
+                    </div>
+                    <a href="/forgot-password" class="login-section-container-options-link">Forgot password?</a>
+                </div>
+<!--                <div><span th:text="${exMessage}" style="color: red"></span></div>-->
+                <div class="login-section-form-buttons">
+                    <input type="submit" class="login-section-container-form-login" value="Login now">
+                    <a href="/register" class="login-section-container-form-signup">Create account</a>
+                </div>
+                <div class="login-section-form-social">
+                    <div class="login-section-form-social-description-wrapper">
+                        <hr class="login-section-form-social-description-line">
+                        <span class="login-section-form-social-description">Or you can Join with</span>
+                        <hr class="login-section-form-social-description-line">
+                    </div>
+                    <div class="login-section-form-social-icon-wrapper">
+                        <a href="#" class="login-section-form-social-icon"><img th:src="@{/img/google-plus.svg}"
+                                                                                alt="Google Plus"></a>
+                        <a href="#" class="login-section-form-social-icon"><img th:src="@{/img/facebook.svg}"
+                                                                                alt="Facebook"></a>
+                        <a href="#" class="login-section-form-social-icon"><img th:src="@{/img/linked-in.svg}"
+                                                                                alt="Linked In"></a>
+                        <a href="#" class="login-section-form-social-icon mr0"><img th:src="@{/img/twitter.svg}"
+                                                                                    alt="Twitter"></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+
+<script th:src="@{/js/checkbox.js}"></script>
+</body>
+
+</html>
