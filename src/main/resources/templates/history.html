@@ -24,9 +24,6 @@
                 </div>
                 <div class="log-out-block">
                     <img th:src="@{/img/log-out-icon.svg}" alt="Log out">
-                    <div th:if="${name.equals('')}">
-                    <a href="/login" class="log-out-btn">Login</a>
-                    </div>
                     <div th:unless="${name.equals('')}">
                         <a href="/logout" class="log-out-btn">Log out</a>
                     </div>
@@ -40,33 +37,26 @@
 <section class="exchange">
     <div class="exchange-content">
         <h3 class="exchange-content-heading">
-            Expression calculator
+            History Calculator
         </h3>
-        <form method="post">
-            <input type="text" name="expression"><br>
-            <input type="submit" value="Calculate">
-        </form>
-        <h2 th:text="${result}"></h2>
-        <div th:if="${result.equals('You should register for continue.')}">
-            <a href="/register" class="log-out-btn">Register</a>
-        </div>
-        <div th:if="${result.equals('You should share link in your social media for extra 10 calculation!')}">
-            <a href="/share" class="log-out-btn">Share</a>
-<!--            <a class="resp-sharing-button__link"-->
-<!--               href="https://facebook.com/sharer/sharer.php(u=http://localhost:8080)}" target="_blank"-->
-<!--               rel="noopener" aria-label="">-->
-<!--                <div class="resp-sharing-button resp-sharing-button&#45;&#45;facebook resp-sharing-button&#45;&#45;small">-->
-<!--                    <div aria-hidden="true" class="resp-sharing-button_icon resp-sharing-button_icon&#45;&#45;solidcircle">-->
-<!--                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">-->
-<!--                            <path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm3.6 11.5h-2.1v7h-3v-7h-2v-2h2V8.34c0-1.1.35-2.82 2.65-2.82h2.35v2.3h-1.4c-.25 0-.6.13-.6.66V9.5h2.34l-.24 2z"/>-->
-<!--                        </svg>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </a>-->
-        </div>
-        <div th:if="${!name.equals('')}">
-            <a href="/history" class="log-out-btn">History</a>
-        </div>
+        <table>
+            <thead>
+            <tr>
+                <th> Date </th>
+                <th> Expression </th>
+                <th> Result </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="history : ${histories}">
+                <td ><span th:text="${#temporals.format(history.date, 'dd.MM.yyyy - HH:mm')}"> Date </span></td>
+                <td><span th:text="${history.expression}"> Expression </span></td>
+                <td><span th:text="${history.result}"> Result </span></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="/main-page" class="log-out-btn">Return Calculator</a>
 
     </div>
 

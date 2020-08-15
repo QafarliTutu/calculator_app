@@ -61,7 +61,7 @@
                     <img th:src="@{/img/lock-icon.svg}" alt="User Icon">
                     <label for="ref_user_email"></label>
                     <input class="registration-section-container-form-input" id="ref_user_email"
-                           placeholder="Referral User Email" type="ref_user_email" th:field="*{ref_user_email}">
+                           placeholder="Referral User Email" type="text" th:field="*{ref_user_email}">
                     <span class="error" th:if="${#fields.hasErrors('ref_user_email')}" th:errors="*{ref_user_email}" style="color: red"></span>
 
                 </div>

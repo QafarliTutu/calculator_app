@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/main-page.css}">
     <link rel="stylesheet" th:href="@{/css/custom-select.css}">
-    <title>Calculator: Main Page</title>
+    <title>Exchange: Main Page</title>
 </head>
 
 <body>
@@ -19,10 +19,11 @@
     <div class="main-header-wrapper">
         <div class="main-header-profile-wrapper">
             <div class="main-header-profile-credentials">
-                <span class="main-header-username">Guest</span>
                 <div class="log-out-block">
                     <img th:src="@{/img/log-out-icon.svg}" alt="Log out">
-                    <a href="/login" class="log-out-btn">Log out</a>
+                    <div>
+                        <a href="/logout" class="log-out-btn">Log out</a>
+                    </div>
                 </div>
             </div>
             <img class="main-header-person-icon" th:src="@{/img/user-icon-with-background.svg}" alt="User Icon">
@@ -33,17 +34,10 @@
 <section class="exchange">
     <div class="exchange-content">
         <h3 class="exchange-content-heading">
-            Expression calculator
+            Thank for sharing!
         </h3>
-        <form method="post">
-            <input type="text" name="x"><br>
-            <input type="submit" value="Calculate">
-        </form>
-        <h2 th:text="${result}"></h2>
-        <div th:if="${result.equals('You should register for continue.')}">
-            <a href="/register" class="log-out-btn">Register</a>
-        </div>
 
+        <a href="/main-page" class="log-out-btn">Return Calculator</a>
     </div>
 
 </section>

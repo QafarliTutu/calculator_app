@@ -14,10 +14,15 @@ public class CalculationService {
 
     private final ScriptEngineManager mgr;
 
-    public String calculate(String x) throws ScriptException {
+    public String calculate(String x) {
         ScriptEngine engine = mgr.getEngineByName("JavaScript");
         if(x.equals("")) return "Empty expression!";
-        String result = engine.eval(x).toString();
+        String result = null;
+        try {
+            result = engine.eval(x).toString();
+        } catch (ScriptException e) {
+            return "You have mistake at expression.";
+        }
         if (result.equals("Infinity")) return "Sorry, Dividing to zero is impossible!";
         return result;
     }

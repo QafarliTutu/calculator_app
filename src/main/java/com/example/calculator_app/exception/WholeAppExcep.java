@@ -1,5 +1,8 @@
 package com.example.calculator_app.exception;
 
+import com.example.calculator_app.entity.History;
+import com.example.calculator_app.repo.HistoryRepo;
+import com.example.calculator_app.service.HistoryService;
 import com.example.calculator_app.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -21,7 +24,7 @@ public class WholeAppExcep {
         if (ex.getMessage().startsWith("ReferenceError")) result = "You should use only numbers!";
         mav.addObject("result", result);
         mav.addObject("name",userService.getNameFromPrincipal(auth));
-        return mav ;
+        return mav;
     }
 
 }

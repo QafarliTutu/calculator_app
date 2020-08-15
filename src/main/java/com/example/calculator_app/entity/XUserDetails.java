@@ -32,8 +32,6 @@ public class XUserDetails implements UserDetails {
 
     }
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.stream(roles)

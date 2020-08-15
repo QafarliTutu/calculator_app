@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,6 +18,12 @@ public class XUser {
     private String password;
     private String ref_user_email;
     private String roles;
+
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    private XUserCount userCount;
+
+    @OneToMany(mappedBy = "xUser",cascade = CascadeType.ALL)
+    private List<History> history;
 
     @Transient
     private final static String DELIMITER = ":";
