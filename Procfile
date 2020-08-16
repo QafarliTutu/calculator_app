@@ -1,0 +1,1 @@
+web: java -jar target/calculator_app-0.0.1-SNAPSHOT.jar
