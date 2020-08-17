@@ -18,7 +18,7 @@ public class ShareService {
                 url = "mailto:?body=http://myfirstcalculatorapp.herokuapp.com/main-page";
                 break;
             case "linkedin":
-                url = "http://www.linkedin.com/shareArticle?mini=true&amp;url=http://myfirstcalculatorapp.herokuapp.com/main-page";
+                url = "http://www.linkedin.com/shareArticle?url=http://myfirstcalculatorapp.herokuapp.com/main-page";
                 break;
             case "telegram":
                 url = "http://telegram.me/share/url?url=http://myfirstcalculatorapp.herokuapp.com/main-page";
