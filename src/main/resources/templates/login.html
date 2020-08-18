@@ -22,29 +22,31 @@
             <h1 class="login-section-container-title">Welcome Back!</h1>
             <p class="login-section-container-description">To keep connected with us please login with personal
                 information by email address and password</p>
-            <div th:text="${message}" style="color:red;"></div>
+<!--            <div th:text="${#messages}" style="color:red;"></div>-->
 <!--            <div><a href="/web/main-page-guest">Continue without an account</a></div>-->
-            <form method="post" class="login-section-container-form" action="/login" >
+            <form method="post" class="login-section-container-form" action="/login">
+                <div th:if="${param.error}">
+                    <span style="color: red">
+                        Username or Password is incorrect.
+                    </span>
+                </div>
                 <div class="login-section-container-form-input-wrapper">
                     <img th:src="@{/img/mail-icon.svg}" alt="User Icon">
                     <label for="username"></label>
                     <input class="login-section-container-form-input" id="username" name="username" placeholder="Email address"
                            type="text">
-<!--                    <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>-->
-
                 </div>
                 <div class="login-section-container-form-input-wrapper">
                     <img th:src="@{/img/lock-icon.svg}" alt="User Icon">
                     <label for="password"></label>
                     <input class="login-section-container-form-input" id="password" name="password" placeholder="Password"
                            type="password">
-<!--                    <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></span>-->
 
                 </div>
                 <div class="login-section-container-options">
                     <div class="login-section-container-options-wrapper">
-                        <label class="login-section-container-options-checkbox-wrapper">Remember Me
-                            <input type="checkbox" class="login-section-container-options-old-checkbox">
+                        <label for="remember-me" class="login-section-container-options-checkbox-wrapper">Remember Me
+                            <input type="checkbox" class="login-section-container-options-old-checkbox" id="remember-me" name="remember-me">
                             <span class="login-section-container-options-checkmark"></span>
                         </label>
                     </div>

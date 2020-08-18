@@ -1,5 +1,7 @@
 package com.example.calculator_app.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +10,9 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class XUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

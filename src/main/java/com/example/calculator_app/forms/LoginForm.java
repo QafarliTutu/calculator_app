@@ -4,14 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserForm {
-    private String fullname;
+public class LoginForm {
     private String username;
     private String password;
-    private String passwordConfirm;
-    private String ref_user_email;
 }

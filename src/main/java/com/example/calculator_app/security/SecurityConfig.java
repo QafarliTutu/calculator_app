@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
@@ -33,7 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/main-page", true);
+                .defaultSuccessUrl("/main-page", true)
+                .and()
+                .rememberMe()
+                .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(14))
+                .key("qwertyuiop")
+                .and();
     }
 
     @Override

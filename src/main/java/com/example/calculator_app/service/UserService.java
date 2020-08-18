@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -36,24 +35,34 @@ public class UserService {
         });
     }
 
+    public boolean checkEmail(String email){
+        return repo.findXUsersByUsername(email).isPresent();
+    }
+
     public XUser findUser(String username){
        return repo.findXUsersByUsername(username).orElseThrow(()-> new UsernameNotFoundException("User not found."));
     }
 
+    public boolean checkRef_user(UserForm userForm) {
+        return !userForm.getUsername().equals(userForm.getRef_user_email());
+    }
+
     public XUser save(UserForm userForm) {
-        XUser user = new XUser();
-        user.setFullname(userForm.getFullname());
-        user.setPassword(bcpe.encode(userForm.getPassword()));
-        user.setUsername(userForm.getUsername());
-        user.setRef_user_email(userForm.getRef_user_email());
-        log.info(userForm.getRef_user_email());
-        user.setRoles(new String[]{"USER"});
-        XUserCount userCount = new XUserCount();
-        userCount.setCurrCount(0);
-        userCount.setMaxCount(10);
-        userCount.setUser(user);
-        user.setUserCount(userCount);
-        return repo.save(user);
+            XUser user = new XUser();
+            user.setFullname(userForm.getFullname());
+            user.setPassword(bcpe.encode(userForm.getPassword()));
+            user.setUsername(userForm.getUsername());
+            user.setRoles(new String[]{"USER"});
+           // if(checkRef_user(userForm)){
+                user.setRef_user_email(userForm.getRef_user_email());
+          //  }
+            XUserCount userCount = new XUserCount();
+            userCount.setCurrCount(0);
+            userCount.setMaxCount(10);
+            userCount.setUser(user);
+            user.setUserCount(userCount);
+            return repo.save(user);
+
     }
 
     public String getNameFromPrincipal(Authentication auth){
@@ -77,4 +86,6 @@ public class UserService {
         }
         else return false;
     }
+
+
 }
