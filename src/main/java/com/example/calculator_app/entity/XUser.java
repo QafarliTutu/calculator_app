@@ -29,6 +29,9 @@ public class XUser {
     @OneToMany(mappedBy = "xUser",cascade = CascadeType.ALL)
     private List<History> history;
 
+    @OneToMany(mappedBy = "xUser", cascade = CascadeType.ALL)
+    private List<ResetToken> resetToken;
+
     @Transient
     private final static String DELIMITER = ":";
 

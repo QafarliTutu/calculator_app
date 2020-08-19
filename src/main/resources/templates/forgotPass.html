@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator: Forgot Password</title>
+    <link rel="stylesheet" th:href="@{/css/forgot-password.css}">
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <a href="/login" class="header-link"><img th:src="@{/img/iba-logo-sky-blue.svg}" alt="IBA Tech Academy"></a>
+    </header>
+
+    <section class="reset-section">
+        <img class="reset-section-image" th:src="@{/img/login-image.svg}" alt="404">
+        <div class="reset-section-container">
+            <h1 class="reset-section-container-title">Reset Password!</h1>
+            <p class="reset-section-container-description">We’ll e-mail you instruction on how to reset your
+                password.</p>
+            <form class="reset-section-container-form" th:action="@{/forgot-password}" th:object="${user}" method="post">
+                <div class="reset-section-container-form-input-wrapper">
+                    <img th:src="@{/img/mail-icon.svg}" alt="User Icon">
+                    <label for="email"></label>
+                    <input class="reset-section-container-form-input" id="email" placeholder="Email address"
+                           type="email" th:field="*{username}">
+                    <input type="submit" value="Reset Password">
+
+<!--                    <td><input type="reset" value="Clear"/></td>-->
+<!--                    <td><input type="submit" value="Reset Password"></input></td>-->
+<!--                </div>-->
+<!--                <span class="go-back-text">Go back to <a href="/web/login" class="go-back-link">Login</a></span>-->
+<!--                <div class="reset-section-form-buttons">-->
+<!--                    <input type="submit" value="Reset" class="reset-section-container-form-login"/>-->
+<!--                    <a href="/register" class="reset-section-container-form-signup">Create account</a>-->
+<!--                </div>-->
+            </form>
+        </div>
+    </section>
+</div>

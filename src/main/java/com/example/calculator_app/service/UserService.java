@@ -43,25 +43,23 @@ public class UserService {
        return repo.findXUsersByUsername(username).orElseThrow(()-> new UsernameNotFoundException("User not found."));
     }
 
-    public boolean checkRef_user(UserForm userForm) {
-        return !userForm.getUsername().equals(userForm.getRef_user_email());
+    public XUser convertFormToUser(UserForm userForm){
+        XUser user = new XUser();
+        user.setFullname(userForm.getFullname());
+        user.setPassword(bcpe.encode(userForm.getPassword()));
+        user.setUsername(userForm.getUsername());
+        user.setRoles(new String[]{"USER"});
+        user.setRef_user_email(userForm.getRef_user_email());
+        return user;
     }
 
-    public XUser save(UserForm userForm) {
-            XUser user = new XUser();
-            user.setFullname(userForm.getFullname());
-            user.setPassword(bcpe.encode(userForm.getPassword()));
-            user.setUsername(userForm.getUsername());
-            user.setRoles(new String[]{"USER"});
-           // if(checkRef_user(userForm)){
-                user.setRef_user_email(userForm.getRef_user_email());
-          //  }
+    public void save(XUser user) {
             XUserCount userCount = new XUserCount();
             userCount.setCurrCount(0);
             userCount.setMaxCount(10);
             userCount.setUser(user);
             user.setUserCount(userCount);
-            return repo.save(user);
+            repo.save(user);
 
     }
 

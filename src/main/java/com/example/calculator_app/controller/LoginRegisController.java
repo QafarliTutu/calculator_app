@@ -55,7 +55,7 @@ public class LoginRegisController {
             mav.setViewName("registration");
         }
         else{
-            userService.save(userForm);
+            userService.save(userService.convertFormToUser(userForm));
             userService.updateUser(userForm.getRef_user_email());
             mav.setViewName("login");
         }

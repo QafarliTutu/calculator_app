@@ -33,26 +33,27 @@ public class RegisterValidator implements Validator {
     public void validate(Object o, Errors errors) {
         UserForm userForm = (UserForm) o;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors,
-                "fullname","userform.name.required");
+                "fullname", "userform.name.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors,
-                "username","userform.email.required");
-        if(!errors.hasFieldErrors("username")){
-            if (userService.checkEmail(userForm.getUsername())){
-                errors.rejectValue("username","userform.email.duplicate");
-            }else if (GenericValidator.isEmail(userForm.getUsername())){
-                errors.rejectValue("username","userform.email.invalid");
+                "username", "userform.email.required");
+        if (!errors.hasFieldErrors("username")) {
+            if (userService.checkEmail(userForm.getUsername())) {
+                errors.rejectValue("username", "userform.email.duplicate");
+//            }else if (GenericValidator.isEmail(userForm.getUsername())){
+//                errors.rejectValue("username","userform.email.invalid");
+//            }
             }
-        }
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors,
-                "password","userform.password.required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors,
-                "passwordConfirm","userform.passwordConfirm.required");
-        if(!userForm.getPassword().equals(userForm.getPasswordConfirm())){
-            errors.rejectValue("passwordConfirm","userform.password.mismatch");
-        }
-        if(userForm.getUsername().equals(userForm.getRef_user_email())){
-            errors.rejectValue("ref_user_email","userform.ref_user.invalid");
-        }
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+                    "password", "userform.password.required");
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+                    "passwordConfirm", "userform.passwordConfirm.required");
+            if (!userForm.getPassword().equals(userForm.getPasswordConfirm())) {
+                errors.rejectValue("passwordConfirm", "userform.password.mismatch");
+            }
+            if (userForm.getUsername().equals(userForm.getRef_user_email())) {
+                errors.rejectValue("ref_user_email", "userform.ref_user.invalid");
+            }
 
+        }
     }
 }
