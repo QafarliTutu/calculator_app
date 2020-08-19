@@ -53,6 +53,10 @@ public class UserService {
         return user;
     }
 
+    public void update(XUser user) {
+        repo.save(user);
+    }
+
     public void save(XUser user) {
             XUserCount userCount = new XUserCount();
             userCount.setCurrCount(0);

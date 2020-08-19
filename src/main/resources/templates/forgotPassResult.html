@@ -7,6 +7,9 @@
 <body>
 <center>
     <span th:text="${message}"></span>
+    <div th:if="${message.equals('Password successfully reset. You can now login.')}">
+        <a href="/login" class="log-out-btn">Login</a>
+    </div>
 </center>
 </body>
 </html>

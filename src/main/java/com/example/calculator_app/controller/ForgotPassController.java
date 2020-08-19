@@ -6,6 +6,7 @@ import com.example.calculator_app.repo.ResetTokenRepo;
 import com.example.calculator_app.service.EmailSendService;
 import com.example.calculator_app.service.UserService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @AllArgsConstructor
+@Log4j2
 public class ForgotPassController {
     private final UserService userService;
     private final ResetTokenRepo resetTokenRepo;
@@ -41,7 +43,7 @@ public class ForgotPassController {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setTo(existingUser.getUsername());
             mailMessage.setSubject("Complete Reset Password.");
-            mailMessage.setFrom("url.shortener.spring@gmail.com");
+            mailMessage.setFrom("myfirstcalculatorapp@gmail.com");
             mailMessage.setText("To complete the password reset process, please click here: "
                     + "http://localhost:8080/confirm-reset?token=" + resetToken.getToken());
             senderService.sendEmail(mailMessage);
@@ -60,7 +62,6 @@ public class ForgotPassController {
         ResetToken resetToken = resetTokenRepo.findByToken(token);
         if(resetToken!=null){
             XUser xUser = userService.findUser(resetToken.getXUser().getUsername());
-            //userService.save(xUser);
             mav.addObject("user",xUser);
             mav.addObject("username",xUser.getUsername());
             mav.setViewName("resetPassword");
@@ -76,7 +77,7 @@ public class ForgotPassController {
         if(xUser.getUsername() != null){
             XUser tokenUser = userService.findUser(xUser.getUsername());
             tokenUser.setPassword(encoder.encode(xUser.getPassword()));
-            userService.save(tokenUser);
+            userService.update(tokenUser);
             mav.addObject("message","Password successfully reset. You can now login.");
         }else {
             mav.addObject("message","The link is invalid or broken!");

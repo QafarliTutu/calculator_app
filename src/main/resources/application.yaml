@@ -15,8 +15,8 @@ spring:
   mail:
     host:  smtp.gmail.com
     port: 587
-    username: url.shortener.spring@gmail.com
-    password: Url-1234
+    username: myfirstcalculatorapp@gmail.com
+    password: tutuqafarli
     properties:
       mail:
         smtp:
