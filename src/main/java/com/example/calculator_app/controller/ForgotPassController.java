@@ -45,7 +45,7 @@ public class ForgotPassController {
             mailMessage.setSubject("Complete Reset Password.");
             mailMessage.setFrom("myfirstcalculatorapp@gmail.com");
             mailMessage.setText("To complete the password reset process, please click here: "
-                    + "http://localhost:8080/confirm-reset?token=" + resetToken.getToken());
+                    + "http://myfirstcalculatorapp.herokuapp.com/confirm-reset?token=" + resetToken.getToken());
             senderService.sendEmail(mailMessage);
             message = "Request to reset password received. Check your inbox for the reset link.";
             //mav.setViewName("successForgotPassword");
